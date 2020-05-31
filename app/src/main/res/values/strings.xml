@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ServiceWorker</string>
+    <string name="image_one">image one</string>
+    <string name="image_two">image two</string>
+    <string name="button1">Button1</string>
+    <string name="button2">Button2</string>
+</resources>

@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    testOptions.unitTests.includeAndroidResources = true
+    defaultConfig {
+        applicationId "in.nitin.serviceworker"
+        minSdkVersion 24
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding.enabled = true
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //standard
+    implementation deps.ktx_stdlib
+    implementation deps.app_compat
+    implementation deps.ktx_core
+    implementation deps.const_layout
+    implementation deps.lgcy
+
+    //testImpl
+    testImplementation deps.testImpl.runner
+    testImplementation deps.testImpl.core
+    testImplementation deps.testImpl.rules
+    testImplementation deps.testImpl.junit
+    testImplementation deps.testImpl.espresso_core
+    testImplementation deps.testImpl.espresso_contrib
+
+    //design
+    implementation deps.material
+
+    //retrofit
+    implementation deps.retrofit
+
+}
